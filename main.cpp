@@ -5,7 +5,7 @@ int main()
 	char num[80];
 	gets_s(num);
 	int size = strlen(num);
-	int n = atoi(num);
+	unsigned long long n = atol(num);
 	int* a = new int[size];
 	int sum = 0;
 	int count = 0;
