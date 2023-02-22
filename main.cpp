@@ -2,42 +2,34 @@
 using namespace std;
 int main()
 {
-	char num[80];
-	gets_s(num);
-	int size = strlen(num);
-	unsigned long long n = atol(num);
-	int* a = new int[size];
-	int sum = 0;
-	int count = 0;
-	for (; n != 0; )
+	int n;
+	cin >> n;
+	int** a = new int* [n];
+	for (int i = 0; i < n; i++)
 	{
-		for (int i = 0; i < size; i++)
+		a[i] = new int[3];
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < 3; j++)
 		{
-			int st = size - 1 - i;
-			int del = pow(10, st);
-			a[i] = n / del;
-			int otn = a[i] * del;
-			n = n - otn;
-		}
-		for (int i = 0; i < size; i++)
-		{
-			sum += a[i];
-		}
-		count++;
-		if (sum >= 0 && sum < 10)
-		{
-			break;
-		}
-		else
-		{
-			if(sum%10 != 0)
-				size--;
-			delete[] a;
-			a = new int[size];
-			n = sum;
-			sum = 0;
+			cin >> a[i][j];
 		}
 	}
-	cout << count;
+	int sum = 0;
+	int count = 0;
+	for (int j = 0; j < 3; j++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			sum += a[i][j];
+		}
+		if (sum == 0)
+			count++;
+	}
+	if (count == 3)
+		cout << "YES";
+	else
+		cout << "NO";
 	return 0;
 }
